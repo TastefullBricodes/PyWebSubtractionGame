@@ -6,29 +6,169 @@
   <title>Raycaster</title>
   <link rel="icon" type="image/png" href="../favicon.png" />
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <style></style>
+  <style>
+
+body {
+  margin: auto;
+  text-align: center;
+  align-items: center;
+  background-color: black;
+  cursor: crosshair;
+  height: 100vh;
+  
+}
+
+
+
+.container-fluid{
+  position: absolute;
+}
+
+canvas {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+.header {
+  /*top:45%;*/
+  top: 45%;
+  color: #DDDDDD;
+}
+.footer {
+  bottom:3%;
+}
+.description {
+  color: gray;
+  padding-top: 50px;
+}
+.btn {
+  border-radius: 30px;
+  padding: 10px 30px;
+}
+a, a:hover, a:visited {
+  color: red;
+  text-decoration: none;
+}
+.disable-selection {
+  -moz-user-select: none; /* Firefox */
+  -ms-user-select: none; /* Internet Explorer */
+  -khtml-user-select: none; /* KHTML browsers (e.g. Konqueror) */
+  -webkit-user-select: none; /* Chrome, Safari, and Opera */
+  -webkit-touch-callout: none; /* Disable Android and iOS callouts*/
+}
+h1::after {
+  content: ' V 2.0';
+  font-size: 12px;
+  position:absolute;
+  top: 3px;
+  padding-left: 5px;
+  font-weight: 400;
+}
+h2::after {
+  content: '2';
+  font-size: 12px;
+  position:absolute;
+  top: 14px;
+  padding-left: 5px;
+}
+
+.container{
+  display: flex;
+  background-color: white;
+  width: 70%;
+  height: 70%;
+}
+
+@media (prefers-reduced-motion) {
+  body{
+    animation:none;
+  }
+}
+
+.title {
+            text-align: center;
+        }
+
+        .form {
+            padding: 15px;
+            background-color: rgb(255, 255, 255);
+            box-shadow: 0 0 5px rgb(0, 0, 0);
+            border-radius: 15px;
+            width: 30%;
+            /* transform: translateX(500px) translateY(100px); */
+            margin-top: 10%;
+            position: absolute;
+            margin-left: auto;
+            margin-right: auto;
+
+        }
+
+        label {
+            display: inline-block;
+            margin-bottom: 5px;
+        }
+
+        input,
+        textarea {
+            display: inline-block;
+            margin-bottom: 10px;
+            border: none;
+            padding: 5px;
+            border-radius: 10px;
+            width: 100%;
+            box-shadow: 0 0 2px rgb(0, 0, 0);
+        }
+
+        label,
+        h3 {
+            color: rgb(0, 0, 0);
+            /* font-family: 'Bungee Spice', cursive; */
+            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+        }
+
+  </style>
 </head>
 
 <body>
 
-  <div></div>
-
-  <div class="container-fluid fixed-top header disable-selection">
-    <div class="row">
-      <div class="col"></div>
-      <div class="col-md-6">
-        <div class="row">
-          <div class="col">
+<div>
+    <div class="container-fluid fixed-top header disable-selection">
+      <div class="row">
+        <div class="col"></div>
+        <div class="col-md-6">
+          <div class="row">
+            <div class="col">
+            </div>
           </div>
         </div>
+        <div class="col"></div>
       </div>
-      <div class="col"></div>
     </div>
+
+    <div class="form">
+      <hr>
+
+
+          <br>
+          <h3 align="center">GAME</h3>
+<!-- 
+          <label for="number">Current number</label> <br>
+          <input id="number" type="number" name="number">
+          <hr>
+
+          <input type="submit" value="Submit" class="submit-btn"> -->
+
+          <button>1</button>
+          <button>2</button>
+          <button>3</button>
   </div>
+</div>
+
   <script src='https://cdnjs.cloudflare.com/ajax/libs/three.js/89/three.min.js'></script>
 
   <script defer src="https://pyscript.net/latest/pyscript.js"></script>
   <link rel="stylesheet" href="https://pyscript.net/latest/pyscript.css" />
+
   <py-script>
 
     from pyodide.ffi import create_proxy, to_js
@@ -90,7 +230,7 @@ particle_perms = Object.fromEntries(to_js(particle_perms))
 
 def create_cubes(mathRandom, modularGroup):
   i = 0
-  while i < 70:
+  while i < 30:
     geometry = THREE.BoxBufferGeometry.new();
     material = THREE.MeshStandardMaterial.new(perms);
     cube = THREE.Mesh.new(geometry, material);
