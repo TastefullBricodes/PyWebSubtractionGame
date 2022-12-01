@@ -250,7 +250,7 @@
 
     var cube;
 
-    const pointLight = new THREE.PointLight(0xff0000, 1, 100);
+    const pointLight = new THREE.PointLight(0xffffff, 1, 100);
     pointLight.position.set(10, 10, 10);
     scene.add(pointLight);
 
@@ -260,16 +260,21 @@
 
     var cubehold = [];
 
-    for (let i = 0; i < (randomnumber * 1); i++) {
-      var sizerand = Math.random() * 1
+    const cubedensity = 1;
+    const cubespace = 4
+    const cubesizeindex = 1
+
+    for (let i = 0; i < (randomnumber * cubedensity); i++) {
+      var sizerand = Math.random() * cubesizeindex
       const geometry = new THREE.BoxGeometry(sizerand, sizerand, sizerand);
-      const material = new THREE.MeshStandardMaterial({ color: 0x03fce8, flatShading: false, wireframe: false, shininess: 30 });
+      const material = new THREE.MeshStandardMaterial({ color: 0x03fce8, flatShading: false, wireframe: false, shininess: 100 });
       cube = new THREE.Mesh(geometry, material);
 
+      
 
-      cube.position.x = -2 + (Math.random() * 4)
-      cube.position.y = -2 + (Math.random() * 4)
-      cube.position.z = -2 + (Math.random() * 4)
+      cube.position.x = ((cubespace/2)*-1) + (Math.random() * cubespace)
+      cube.position.y = ((cubespace/2)*-1) + (Math.random() * cubespace)
+      cube.position.z = ((cubespace/2)*-1) + (Math.random() * cubespace)
 
       cube.rotation.x = Math.random() * 10
       cube.rotation.y = Math.random() * 10
@@ -308,9 +313,9 @@
 
       scene.traverse(function (object) {
         if (object instanceof THREE.Mesh) {
-          object.rotation.z += Math.random() * 0.0001
-          object.rotation.x += Math.random() * 0.0001
-          object.rotation.y += Math.random() * 0.0001
+          object.rotation.z += Math.random() * 0.00006
+          object.rotation.x += Math.random() * 0.00006
+          object.rotation.y += Math.random() * 0.00006
         }
       })
 
@@ -348,6 +353,12 @@
 
   </script>
 
+
+  <script>
+// Game logic-er
+
+
+  </script>
 
 </body>
 
